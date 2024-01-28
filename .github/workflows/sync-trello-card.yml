@@ -19,3 +19,4 @@ jobs:
         echo "Trello Card ID: ${{ env.TRELLO_CARD_ID := ${trello_card_id%%/*} }}"
     - name: Use the Trello Card ID
       run: echo "Trello Card ID: ${{ env.TRELLO_CARD_ID }}"
+      
