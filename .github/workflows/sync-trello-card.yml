@@ -10,10 +10,8 @@ jobs:
     if: contains(github.event.comment.body, 'trello.com/c/') 
     runs-on: ubuntu-latest
     steps:
+      - name: Extract Trello Card ID
+        run: |
+          echo "::set-output name=trello_card_id::$(echo ${{ github.event.comment.body }} | grep -oP '(?<=trello.com/c/)[^/]+')"
       - name: Log Message
-        run: echo "a comment"
-      - name: Add initial reaction
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          reactions: eyes
+        run: echo "Trello Card ID: ${{ steps.extract_id.outputs.trello_card_id }}"
