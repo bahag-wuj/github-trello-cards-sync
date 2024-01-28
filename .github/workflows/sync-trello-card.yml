@@ -20,3 +20,4 @@ jobs:
       
       - name: Print Trello Card ID
         run: echo "Trello Card ID: ${{ env.TRELLO_CARD_ID }}"
+        
