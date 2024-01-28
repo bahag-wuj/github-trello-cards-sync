@@ -20,4 +20,4 @@ jobs:
       
       - name: Print Trello Card ID
         run: echo "Trello Card ID: ${{ steps.extract_id.outputs.trello_card_id }}"
-        
+      
