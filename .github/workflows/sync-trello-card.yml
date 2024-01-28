@@ -5,11 +5,18 @@ on:
     types: [created, edited]
     
 jobs:
-  snyc-trello-card:
+  sync-trello-card:
     name: Sync Trello Card
     if: contains(github.event.comment.body, 'trello.com/c/') 
     runs-on: ubuntu-latest
-  steps:
+    steps:
       - name: Extract Trello Card ID
         id: extract_id
-        run: echo ${{ github.event.comment.body }}
+        run: |
+          echo "Trello Card URL: ${{ github.event.comment.body }}"
+          trello_url="${{ github.event.comment.body }}"
+          trello_card_id="${trello_url#*trello.com/c/}"
+          echo "::set-output name=trello_card_id::${trello_card_id%%/*}"
+      
+      - name: Print Trello Card ID
+        run: echo "Trello Card ID: ${{ steps.extract_id.outputs.trello_card_id }}"
