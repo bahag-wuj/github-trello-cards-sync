@@ -19,5 +19,5 @@ jobs:
           echo "::set-output name=trello_card_id::${trello_card_id%%/*}"
       
       - name: Print Trello Card ID
-        run: echo "Trello Card ID: ${{ steps.extract_id.outputs.trello_card_id }}"
+        run: echo "Trello Card ID"
       
